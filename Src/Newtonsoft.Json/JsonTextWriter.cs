@@ -680,7 +680,7 @@ namespace Newtonsoft.Json
 
             string text = null;
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             text = value.ToString("D", CultureInfo.InvariantCulture);
 #else
             text = value.ToString("D");

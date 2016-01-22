@@ -391,7 +391,7 @@ namespace Newtonsoft.Json.Bson
         {
             base.WriteValue(value);
             string s = null;
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             s = value.ToString(CultureInfo.InvariantCulture);
 #else
             s = value.ToString();

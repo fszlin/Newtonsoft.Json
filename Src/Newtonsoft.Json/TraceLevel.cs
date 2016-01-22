@@ -1,5 +1,5 @@
 ﻿
-#if (DOTNET || PORTABLE40 || PORTABLE)
+#if (DOTNET || PORTABLE40 || PORTABLE || UNITY)
 using Newtonsoft.Json.Serialization;
 
 namespace Newtonsoft.Json

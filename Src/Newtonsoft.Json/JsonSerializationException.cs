@@ -33,7 +33,7 @@ namespace Newtonsoft.Json
     /// <summary>
     /// The exception thrown when an error occurs during JSON serialization or deserialization.
     /// </summary>
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
     [Serializable]
 #endif
     public class JsonSerializationException : JsonException
@@ -66,7 +66,7 @@ namespace Newtonsoft.Json
         {
         }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonSerializationException"/> class.
         /// </summary>

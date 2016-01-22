@@ -568,7 +568,7 @@ namespace Newtonsoft.Json.Serialization
                     JsonDynamicContract dynamicContract = (JsonDynamicContract)contract;
                     return CreateDynamic(reader, dynamicContract, member, id);
 #endif
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
                 case JsonContractType.Serializable:
                     JsonISerializableContract serializableContract = (JsonISerializableContract)contract;
                     return CreateISerializable(reader, serializableContract, member, id);
@@ -1670,7 +1670,7 @@ namespace Newtonsoft.Json.Serialization
             return underlyingList;
         }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         private object CreateISerializable(JsonReader reader, JsonISerializableContract contract, JsonProperty member, string id)
         {
             Type objectType = contract.UnderlyingType;

@@ -25,7 +25,9 @@
 
 using System;
 using System.Collections;
+#if !UNITY
 using Newtonsoft.Json.Schema;
+#endif
 #if !(NET35 || NET20 || PORTABLE || PORTABLE40)
 using System.Collections.Concurrent;
 #endif
@@ -97,9 +99,9 @@ namespace Newtonsoft.Json.Serialization
     /// </summary>
     public class DefaultContractResolver : IContractResolver
     {
-#pragma warning disable 612,618
+#pragma warning disable 612, 618
         private static readonly IContractResolver _instance = new DefaultContractResolver(true);
-#pragma warning restore 612,618
+#pragma warning restore 612, 618
 
         internal static IContractResolver Instance
         {
@@ -1052,7 +1054,7 @@ namespace Newtonsoft.Json.Serialization
             return contract;
         }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         /// <summary>
         /// Creates a <see cref="JsonISerializableContract"/> for the given type.
         /// </summary>
@@ -1156,7 +1158,7 @@ namespace Newtonsoft.Json.Serialization
                 return CreateStringContract(objectType);
             }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             if (!IgnoreSerializableInterface && typeof(ISerializable).IsAssignableFrom(t))
             {
                 return CreateISerializableContract(objectType);
@@ -1332,7 +1334,7 @@ namespace Newtonsoft.Json.Serialization
             // warning - this method use to cause errors with Intellitrace. Retest in VS Ultimate after changes
             IValueProvider valueProvider;
 
-#if !(PORTABLE40 || PORTABLE || DOTNET)
+#if !(PORTABLE40 || PORTABLE || DOTNET || UNITY)
             if (DynamicCodeGeneration)
             {
                 valueProvider = new DynamicValueProvider(member);
@@ -1341,7 +1343,7 @@ namespace Newtonsoft.Json.Serialization
             {
                 valueProvider = new ReflectionValueProvider(member);
             }
-#elif !(PORTABLE40)
+#elif !(PORTABLE40 || UNITY)
             valueProvider = new ExpressionValueProvider(member);
 #else
             valueProvider = new ReflectionValueProvider(member);
