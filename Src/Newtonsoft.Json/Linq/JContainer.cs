@@ -46,7 +46,7 @@ namespace Newtonsoft.Json.Linq
     /// Represents a token that can contain other tokens.
     /// </summary>
     public abstract class JContainer : JToken, IList<JToken>
-#if !(DOTNET || PORTABLE || PORTABLE40)
+#if !(DOTNET || PORTABLE || PORTABLE40 || UNITY)
         , ITypedList, IBindingList
 #endif
         , IList
@@ -54,7 +54,7 @@ namespace Newtonsoft.Json.Linq
         , INotifyCollectionChanged
 #endif
     {
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         internal ListChangedEventHandler _listChanged;
         internal AddingNewEventHandler _addingNew;
 
@@ -132,7 +132,7 @@ namespace Newtonsoft.Json.Linq
             return new List<JToken>();
         }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         /// <summary>
         /// Raises the <see cref="AddingNew"/> event.
         /// </summary>
@@ -411,7 +411,7 @@ namespace Newtonsoft.Json.Linq
 
             children.Insert(index, item);
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             if (_listChanged != null)
             {
                 OnListChanged(new ListChangedEventArgs(ListChangedType.ItemAdded, index));
@@ -459,7 +459,7 @@ namespace Newtonsoft.Json.Linq
 
             children.RemoveAt(index);
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             if (_listChanged != null)
             {
                 OnListChanged(new ListChangedEventArgs(ListChangedType.ItemDeleted, index));
@@ -539,7 +539,7 @@ namespace Newtonsoft.Json.Linq
             existing.Previous = null;
             existing.Next = null;
 
-#if !(DOTNET || PORTABLE || PORTABLE40)
+#if !(DOTNET || PORTABLE || PORTABLE40 || UNITY)
             if (_listChanged != null)
             {
                 OnListChanged(new ListChangedEventArgs(ListChangedType.ItemChanged, index));
@@ -568,7 +568,7 @@ namespace Newtonsoft.Json.Linq
 
             children.Clear();
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
             if (_listChanged != null)
             {
                 OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
@@ -901,7 +901,7 @@ namespace Newtonsoft.Json.Linq
             return hashCode;
         }
 
-#if !(DOTNET || PORTABLE40 || PORTABLE)
+#if !(DOTNET || PORTABLE40 || PORTABLE || UNITY)
         string ITypedList.GetListName(PropertyDescriptor[] listAccessors)
         {
             return string.Empty;
@@ -1078,7 +1078,7 @@ namespace Newtonsoft.Json.Linq
         #endregion
 
         #region IBindingList Members
-#if !(DOTNET || PORTABLE || PORTABLE40)
+#if !(DOTNET || PORTABLE || PORTABLE40 || UNITY)
         void IBindingList.AddIndex(PropertyDescriptor property)
         {
         }
