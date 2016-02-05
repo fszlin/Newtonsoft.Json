@@ -69,7 +69,7 @@ namespace Newtonsoft.Json.Serialization
             return CachedAttributeGetter<T>.GetAttribute(attributeProvider);
         }
 
-#if !NET20
+#if !NET20 && !UNITY
         public static DataContractAttribute GetDataContractAttribute(Type type)
         {
             // DataContractAttribute does not have inheritance
@@ -133,7 +133,7 @@ namespace Newtonsoft.Json.Serialization
                 return objectAttribute.MemberSerialization;
             }
 
-#if !NET20
+#if !NET20 && !UNITY
             DataContractAttribute dataContractAttribute = GetDataContractAttribute(objectType);
             if (dataContractAttribute != null)
             {

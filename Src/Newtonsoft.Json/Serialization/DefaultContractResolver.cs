@@ -291,7 +291,7 @@ namespace Newtonsoft.Json.Serialization
 
             if (memberSerialization != MemberSerialization.Fields)
             {
-#if !NET20
+#if !NET20 && !UNITY
                 DataContractAttribute dataContractAttribute = JsonTypeReflector.GetDataContractAttribute(objectType);
 #endif
 
@@ -322,7 +322,7 @@ namespace Newtonsoft.Json.Serialization
                             {
                                 serializableMembers.Add(member);
                             }
-#if !NET20
+#if !NET20 && !UNITY
                             else if (dataContractAttribute != null && JsonTypeReflector.GetAttribute<DataMemberAttribute>(member) != null)
                             {
                                 serializableMembers.Add(member);
@@ -770,7 +770,7 @@ namespace Newtonsoft.Json.Serialization
             {
                 contract.IsReference = containerAttribute._isReference;
             }
-#if !NET20
+#if !NET20 && !UNITY
             else
             {
                 DataContractAttribute dataContractAttribute = JsonTypeReflector.GetDataContractAttribute(contract.NonNullableUnderlyingType);
@@ -1391,7 +1391,7 @@ namespace Newtonsoft.Json.Serialization
 
         private void SetPropertySettingsFromAttributes(JsonProperty property, object attributeProvider, string name, Type declaringType, MemberSerialization memberSerialization, out bool allowNonPublicAccess)
         {
-#if !NET20
+#if !NET20 && !UNITY
             DataContractAttribute dataContractAttribute = JsonTypeReflector.GetDataContractAttribute(declaringType);
 
             MemberInfo memberInfo = attributeProvider as MemberInfo;
@@ -1415,7 +1415,7 @@ namespace Newtonsoft.Json.Serialization
             {
                 mappedName = propertyAttribute.PropertyName;
             }
-#if !NET20
+#if !NET20 && !UNITY
             else if (dataMemberAttribute != null && dataMemberAttribute.Name != null)
             {
                 mappedName = dataMemberAttribute.Name;
@@ -1437,7 +1437,7 @@ namespace Newtonsoft.Json.Serialization
                 property.DefaultValueHandling = propertyAttribute._defaultValueHandling;
                 hasMemberAttribute = true;
             }
-#if !NET20
+#if !NET20 && !UNITY
             else if (dataMemberAttribute != null)
             {
                 property._required = (dataMemberAttribute.IsRequired) ? Required.AllowNull : Required.Default;

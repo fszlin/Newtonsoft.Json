@@ -1,7 +1,7 @@
 ﻿properties { 
   $zipFileName = "Json80r2.zip"
   $majorVersion = "8.0"
-  $majorWithReleaseVersion = "8.0.2"
+  $majorWithReleaseVersion = "8.0.2.2"
   $nugetPrelease = $null
   $version = GetVersion $majorWithReleaseVersion
   $packageId = "Newtonsoft.Json.Unity"

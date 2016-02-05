@@ -51,7 +51,7 @@ namespace Newtonsoft.Json.Utilities
                 string n1 = f.Name;
                 string n2;
 
-#if !NET20
+#if !NET20 && !UNITY
                 n2 = f.GetCustomAttributes(typeof(EnumMemberAttribute), true)
                     .Cast<EnumMemberAttribute>()
                     .Select(a => a.Value)
