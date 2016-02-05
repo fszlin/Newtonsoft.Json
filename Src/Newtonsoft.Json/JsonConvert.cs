@@ -38,7 +38,7 @@ using System.Xml;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Text;
-#if !(NET20 || PORTABLE40)
+#if !(NET20 || PORTABLE40 || UNITY)
 using System.Xml.Linq;
 
 #endif
@@ -991,7 +991,7 @@ namespace Newtonsoft.Json
         #endregion
 
         #region Xml
-#if !(PORTABLE40 || PORTABLE || DOTNET)
+#if !(PORTABLE40 || PORTABLE || DOTNET || UNITY)
         /// <summary>
         /// Serializes the XML node to a JSON string.
         /// </summary>
@@ -1071,7 +1071,7 @@ namespace Newtonsoft.Json
         }
 #endif
 
-#if !NET20 && !PORTABLE40
+#if !NET20 && !(PORTABLE40 || UNITY)
         /// <summary>
         /// Serializes the <see cref="XNode"/> to a JSON string.
         /// </summary>

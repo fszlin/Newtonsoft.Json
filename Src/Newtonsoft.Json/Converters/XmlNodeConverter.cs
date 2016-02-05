@@ -23,7 +23,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if !PORTABLE40
+#if !(PORTABLE40 || UNITY)
 #if !(PORTABLE || NET20 || NET35)
 using System.Numerics;
 #endif
@@ -33,7 +33,7 @@ using System.Globalization;
 using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
-#if !(NET20 || PORTABLE40)
+#if !(NET20 || PORTABLE40 || UNITY)
 using System.Xml.Linq;
 #endif
 using Newtonsoft.Json.Utilities;

@@ -42,7 +42,9 @@ using System.Runtime.Serialization;
 #if !(DOTNET || PORTABLE || PORTABLE40)
 using System.Security.Permissions;
 #endif
+#if !UNITY
 using System.Xml.Serialization;
+#endif
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Utilities;
 using Newtonsoft.Json.Linq;
@@ -116,7 +118,7 @@ namespace Newtonsoft.Json.Serialization
 #if !(NET35 || NET20 || PORTABLE40)
             new ExpandoObjectConverter(),
 #endif
-#if !(PORTABLE40)
+#if !(PORTABLE40 || UNITY)
             new XmlNodeConverter(),
 #endif
 #if !(DOTNET || PORTABLE40 || PORTABLE)

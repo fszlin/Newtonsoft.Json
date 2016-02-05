@@ -30,7 +30,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 #endif
 using System.ComponentModel;
-#if !(NET35 || NET20 || PORTABLE40)
+#if !(NET35 || NET20 || PORTABLE40 || UNITY)
 using System.Dynamic;
 using System.Linq.Expressions;
 #endif
